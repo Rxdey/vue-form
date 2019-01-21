@@ -17,15 +17,6 @@ export default new Router({
       meta: {
         title: '首页'
       }
-    },
-    {
-      path: '/login',
-      name: 'home',
-      component: () => import('./views/login.vue'),
-      meta: {
-        title: '登录'
-      }
     }
-    // component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
   ]
 });

@@ -1,16 +1,16 @@
 <template>
   <transition name="alert">
     <template v-if="isShow">
-    <!-- <div class="rx-mask" v-if="isMask">
+      <!-- <div class="rx-mask" v-if="isMask">
       <div class="rx-toast" :class="[type,size,position]">
         <i v-show="isIcon" :class="'rx-icon-'+type"></i>
         <span>{{message}}</span>
       </div>
     </div> -->
-    <div class="rx-toast" v-ripple :class="[type,size,position]">
-        <i v-show="isIcon" :class="'rx-icon-'+type"></i>
+      <div class="rx-toast" v-ripple :class="[type,size,position]" :style="`width:${width}`">
+        <!-- <i v-if="isIcon" :class="'rx-icon-'+type"></i> -->
         <span>{{message}}</span>
-    </div>
+      </div>
     </template>
   </transition>
 </template>
@@ -26,7 +26,8 @@ export default {
       position: 'middle',
       isMask: false,
       delay: 3000,
-      isIcon: false
+      isIcon: false,
+      width: 'auto'
     };
   },
   watch: {
@@ -45,8 +46,8 @@ export default {
 </script>
 
 <style lang="less">
-@import url("../fonts/iconfont.css");
-@import url("../../../assets/css/public.less");
+// @import url("../fonts/iconfont.css");
+@import url("../../assets/css/public.less");
 .rx-mask {
   z-index: 2000;
   position: fixed;
@@ -65,12 +66,13 @@ export default {
   font-size: 14px;
   box-sizing: border-box;
   left: 50%;
-  min-width: 96px;
-  max-width: 200px;
-  text-align: center;
+  // min-width: 80px;
+  max-width: 80%;
+  // text-align: center;
   transform: translate(-50%, -50%);
   opacity: 1;
   transition: 0.3s ease;
+  line-height: 1.5;
   &.middle {
     top: 50%;
   }
@@ -91,17 +93,18 @@ export default {
     span {
       display: block;
       text-align: center;
-      white-space:normal; word-break:break-all;
+      white-space: normal;
+      word-break: break-all;
     }
   }
-  &.success{
-    color: @color-green
+  &.success {
+    color: @color-green;
   }
-  &.error{
-    color: @color-red
+  &.error {
+    color: @color-red;
   }
-  &.warning{
-    color: @color-yellow
+  &.warning {
+    color: @color-yellow;
   }
 }
 .alert-enter-active,

@@ -1,13 +1,24 @@
-import toast from './rxui/toast/index';
-// import loading from './loading/vue-loading';
-import ripple from './ripple';
-import RouteTransition from './vue-route-transition';
-import { touchRipple } from './ripple/muse-ripple';
+import toast from './toast/index';
+import rxGroup from './group/index';
+import rxInput from './input/index';
+
+const components = [rxGroup, rxInput];
+
+const install = function(Vue) {
+  if (install.installed) return;
+  components.map(component => {
+    Vue.component(component.name, component);
+  });
+};
+
+/* istanbul ignore if */
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue);
+}
 
 export {
+  rxGroup,
   toast,
-  // loading,
-  ripple,
-  touchRipple,
-  RouteTransition
+  rxInput
 };
+export default install;

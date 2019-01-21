@@ -4,10 +4,10 @@ import App from './App.vue';
 import router from './router';
 import store from './store/store';
 import mixins from './common/mixin';
-import { ripple } from './components/index';
+// import rxui from './components/index';
 
-Vue.mixin(mixins)
-  .directive('ripple', ripple);
+// Vue.use(rxui);
+Vue.mixin(mixins);
 
 Vue.config.productionTip = false;
 

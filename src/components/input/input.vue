@@ -1,5 +1,5 @@
 <template>
-  <div class="rx-input" :class="{required: required}">
+  <div class="rx-input" :class="{required: required, 'has-error': !valid}">
     <div class="rx-input__title">
       <div class="rx-input__title--left" v-show="$slots.left">
         <slot name="left"></slot>
@@ -7,10 +7,13 @@
       <div class="rx-input__title--label"><label :for="inputId">{{label}}</label></div>
     </div>
     <div class="rx-input__body">
-      <input :type="type" :id="inputId" :placeholder="placeholder" :maxlength="max" :name="name" v-model="currentValue">
+      <input :type="type" :id="inputId" :placeholder="placeholder" :maxlength="max" :name="name" v-model="currentValue" ref="input" @input="change">
     </div>
-    <div class="rx-input__right">
+    <div class="rx-input__right" v-show="$slots['right']">
       <slot name="right"></slot>
+    </div>
+    <div class="error-message">
+      {{errorMessage}}
     </div>
   </div>
 </template>
@@ -148,15 +151,36 @@ export default {
 .rx-input {
   width: 100%;
   font-size: 14px;
-  padding: 10px 15px;
   background: #fff;
   box-sizing: border-box;
+  line-height: 30px;
+  border-bottom: 1px solid #e5e5e5;
+  * {
+    box-sizing: border-box;
+  }
+  .error-message {
+    display: none;
+    color: @color-red;
+    font-size: 11px;
+    position: absolute;
+    bottom: 2px;
+    left: 100px;
+    line-height: 1;
+  }
+  &.has-error {
+    color: @color-red;
+    input {
+      color: @color-red;
+    }
+    .error-message {
+      display: block;
+    }
+  }
   &.required {
     &::after {
       content: "*";
       position: absolute;
       color: @color-red;
-      line-height: 24px;
       top: 59%;
       transform: translateY(-50%);
       left: 5px;
@@ -164,6 +188,7 @@ export default {
   }
   .flex-row;
   &__title {
+    padding: 10px 0 10px 15px;
     .flex-row;
     max-width: 90px;
     flex: 1;
@@ -174,7 +199,7 @@ export default {
   &__body {
     width: 100%;
     flex: 1;
-    padding: 0 10px;
+    padding: 10px 10px;
     input {
       border: 0;
       margin: 0;
@@ -186,12 +211,16 @@ export default {
       box-sizing: border-box;
       background-color: transparent;
       outline: none;
-      line-height: 24px;
+      line-height: 30px;
       position: relative;
     }
   }
   &__right {
     position: relative;
+    img {
+      display: block;
+      max-height: 50px;
+    }
   }
 }
 </style>

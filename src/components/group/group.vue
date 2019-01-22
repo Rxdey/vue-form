@@ -1,7 +1,8 @@
 <template>
   <div class="rx-group">
     <div class="rx-group__title">
-      <slot name="title">测试</slot>
+      {{title}}
+      <slot name="title"></slot>
     </div>
     <div class="rx-group__content">
       <slot></slot>
@@ -14,7 +15,12 @@ import Bus from '../tool/bus';
 
 export default {
   name: 'rx-group',
-  props: {},
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  },
   data () {
     return {
       fields: [],
@@ -24,10 +30,7 @@ export default {
   computed: {},
   created () {
     Bus.$on('addInput', item => {
-      if (
-        !this.fields.includes(item)
-        && this.findParentId(item) === this._uid
-      ) {
+      if (!this.fields.includes(item) && this.findParentId(item) === this._uid) {
         this.fields.push(item);
       }
     });
@@ -94,7 +97,7 @@ export default {
       if (!child.$parent) {
         return false;
       }
-      if (child.$parent.$options._componentTag === 'rx-form') {
+      if (child.$parent.$options._componentTag === this.$options._componentTag) {
         return child.$parent._uid;
       }
       return this.findParentId(child.$parent);
@@ -103,11 +106,12 @@ export default {
 };
 </script>
 <style lang="less">
-.rx-group{
+.rx-group {
   font-size: 14px;
-  &__title{
-    padding: 15px;
+  &__title {
+    padding: 10px;
   }
-  &__content{}
+  &__content {
+  }
 }
 </style>

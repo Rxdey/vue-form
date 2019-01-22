@@ -1,10 +1,22 @@
 <template>
   <div class="page home">
     <div class="test">
-      <rx-group title="group">
+      <rx-group ref="group" title="Test">
+
+        <rx-input label="姓名" placeholder="请输入用户名" v-model="value">
+        </rx-input>
         <rx-input label="身份证" placeholder="请输入用户名" v-model="value" required>
         </rx-input>
+        <rx-input label="手机号" placeholder="请输入手机号" v-model="phone" required isType="phone" :max="11">
+        </rx-input>
+        <rx-input label="验证码" placeholder="请输入验证码" v-model="value2" required :isType="isOneTwoThree" :min="3" :max="3">
+          <img slot="right" src="https://ws1.sinaimg.cn/large/005O2C54gy1fzf7lrosi8j304n02174i.jpg" alt="" style="padding:5px;">
+        </rx-input>
+
       </rx-group>
+      <div class="btn-box">
+        <button class="rx-button" @click="handleSubmit">验证</button>
+      </div>
     </div>
   </div>
 </template>
@@ -17,14 +29,21 @@ export default {
   props: {},
   data () {
     return {
-      value: ''
+      value: '',
+      value2: '',
+      phone: '',
+      isOneTwoThree: (val) => ({
+        valid: val === '123',
+        message: '请输入123'
+      })
     };
   },
-  computed: {},
-  created () { },
-  mounted () { },
-  watch: {},
   methods: {
+    async handleSubmit() {
+      const vaild = await this.$refs.group.validate();
+      if (!vaild) return false;
+      this.toast('验证通过');
+    }
   },
   components: {
     rxGroup,
@@ -42,5 +61,22 @@ export default {
   color: #fff;
   padding: 10px 15px;
   border-radius: 4px;
+}
+.btn-box{
+  padding: 15px;
+}
+.rx-button{
+  width: 100%;
+  height: 50px;
+  background: #26a2ff;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 18px;
+  &:active{
+    background: fade(#26a2ff, 80%)
+  }
 }
 </style>

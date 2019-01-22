@@ -7,7 +7,7 @@
         <span>{{message}}</span>
       </div>
     </div> -->
-      <div class="rx-toast" v-ripple :class="[type,size,position]" :style="`width:${width}`">
+      <div class="rx-toast" :class="[type,size,position]" :style="`width:${width}`">
         <!-- <i v-if="isIcon" :class="'rx-icon-'+type"></i> -->
         <span>{{message}}</span>
       </div>

@@ -43,8 +43,12 @@ export default {
       default: 'text'
     },
     max: {
-      type: String,
-      default: '400'
+      type: Number,
+      default: 1000
+    },
+    min: {
+      type: Number,
+      default: 0
     },
     required: {
       type: Boolean,
@@ -106,10 +110,17 @@ export default {
     },
     // 表单验证，通过isType传递，内部定义phone(国内手机号)，noChinese(不允许中文输入)，支持自定义函数，返回blooean
     onValid () {
-      if (this.required) {
-        this.valid = !!this.currentValue;
+      if (this.required && !this.currentValue) {
+        this.valid = false;
         this.errorMessage = `${this.label}不能为空`;
+        return false;
       }
+      if (this.min && this.currentValue.length < this.min) {
+        this.valid = false;
+        this.errorMessage = `字符长度不能小于${this.min}个`;
+        return false;
+      }
+      this.valid = true;
       if (this.isType) {
         let validFun = null;
         if (typeof this.isType === 'string') {

@@ -3,7 +3,7 @@
     <div class="test">
       <rx-group ref="group" title="Test">
 
-        <rx-input label="姓名" placeholder="请输入用户名" v-model="value">
+        <rx-input label="姓名" placeholder="请输入用户名" v-model="value3">
         </rx-input>
         <rx-input label="身份证" placeholder="请输入用户名" v-model="value" required>
         </rx-input>
@@ -30,6 +30,7 @@ export default {
   data () {
     return {
       value: '',
+      value3: '',
       value2: '',
       phone: '',
       isOneTwoThree: (val) => ({
@@ -42,7 +43,7 @@ export default {
     async handleSubmit() {
       const vaild = await this.$refs.group.validate();
       if (!vaild) return false;
-      this.toast('验证通过');
+      this.toast('校验通过');
     }
   },
   components: {

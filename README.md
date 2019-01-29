@@ -23,3 +23,7 @@
       this.toast('校验通过');
     }
 ```
+
+## example
+
+[这里](https://rxdey.github.io/vue-form/example/index.html)

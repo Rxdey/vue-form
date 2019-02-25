@@ -1,6 +1,6 @@
 <template>
   <div class="rx-input" :class="{required: required, 'has-error': !valid}">
-    <div class="rx-input__title">
+    <div class="rx-input__title" v-show="label">
       <div class="rx-input__title--left" v-show="$slots.left">
         <slot name="left"></slot>
       </div>

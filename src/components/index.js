@@ -1,6 +1,7 @@
 import toast from './toast/index';
 import rxGroup from './group/index';
 import rxInput from './input/index';
+import rxSelect from './select/index';
 
 const components = [rxGroup, rxInput];
 
@@ -19,6 +20,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export {
   rxGroup,
   toast,
-  rxInput
+  rxInput,
+  rxSelect
 };
 export default install;

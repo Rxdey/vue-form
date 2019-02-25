@@ -13,6 +13,8 @@
           <img slot="right" src="https://ws1.sinaimg.cn/large/005O2C54gy1fzf7lrosi8j304n02174i.jpg" alt="" style="padding:5px;">
         </rx-input>
 
+        <rx-select placeholder="请选择" v-model="select" :data="selectData"></rx-select>
+
       </rx-group>
       <div class="btn-box">
         <button class="rx-button" @click="handleSubmit">验证</button>
@@ -22,7 +24,7 @@
 </template>
 
 <script>
-import { rxGroup, rxInput } from '@/components';
+import { rxGroup, rxInput, rxSelect } from '@/components';
 
 export default {
   name: 'home',
@@ -33,6 +35,8 @@ export default {
       value3: '',
       value2: '',
       phone: '',
+      select: '',
+      selectData: [],
       isOneTwoThree: (val) => ({
         valid: val === '123',
         message: '请输入123'
@@ -40,7 +44,7 @@ export default {
     };
   },
   methods: {
-    async handleSubmit() {
+    async handleSubmit () {
       const vaild = await this.$refs.group.validate();
       if (!vaild) return false;
       this.toast('校验通过');
@@ -48,7 +52,8 @@ export default {
   },
   components: {
     rxGroup,
-    rxInput
+    rxInput,
+    rxSelect
   }
 };
 </script>
@@ -63,10 +68,10 @@ export default {
   padding: 10px 15px;
   border-radius: 4px;
 }
-.btn-box{
+.btn-box {
   padding: 15px;
 }
-.rx-button{
+.rx-button {
   width: 100%;
   height: 50px;
   background: #26a2ff;
@@ -76,8 +81,8 @@ export default {
   border-radius: 4px;
   color: #fff;
   font-size: 18px;
-  &:active{
-    background: fade(#26a2ff, 80%)
+  &:active {
+    background: fade(#26a2ff, 80%);
   }
 }
 </style>

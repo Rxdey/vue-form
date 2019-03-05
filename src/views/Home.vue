@@ -13,7 +13,7 @@
           <img slot="right" src="https://ws1.sinaimg.cn/large/005O2C54gy1fzf7lrosi8j304n02174i.jpg" alt="" style="padding:5px;">
         </rx-input>
 
-        <rx-select placeholder="请选择" v-model="select" :data="selectData"></rx-select>
+        <rx-select label="类型" placeholder="请选择" required v-model="select" :data="selectData"></rx-select>
 
       </rx-group>
       <div class="btn-box">
@@ -36,7 +36,11 @@ export default {
       value2: '',
       phone: '',
       select: '',
-      selectData: [],
+      selectData: [
+        '第一个',
+        '第二个',
+        '第三个'
+      ],
       isOneTwoThree: (val) => ({
         valid: val === '123',
         message: '请输入123'

@@ -1,13 +1,14 @@
 <template>
-  <div class="rx-cell">
-    <div class="rx-cell__title" v-show="label">
+  <div class="rx-cell" @click="handleCellClick">
+    <div class="rx-cell__title">
       <div class="rx-cell__title--left" v-show="$slots.left">
         <slot name="left"></slot>
       </div>
       <div class="rx-cell__title--label">{{label}}</div>
     </div>
     <div class="rx-cell__body">
-      {{value}}
+      <p>{{value}}</p>
+      <slot name="body"></slot>
     </div>
     <div class="rx-cell__right" v-show="$slots['right']">
       <!-- <div class="iconfont icon-right"></div> -->
@@ -42,6 +43,9 @@ export default {
   watch: {
   },
   methods: {
+    handleCellClick() {
+      this.$emit('click', this.value);
+    }
   },
   components: {
   }
@@ -58,6 +62,7 @@ export default {
   position: relative;
 }
 .rx-cell {
+  position: relative;
   width: 100%;
   font-size: 14px;
   background: #fff;
@@ -105,10 +110,11 @@ export default {
   &__body {
     width: 100%;
     flex: 1;
-    padding: 10px 10px;
+    padding: 10px 0 10px 10px;
   }
   &__right {
     position: relative;
+    padding-right: 15px;
     img {
       display: block;
       max-height: 50px;

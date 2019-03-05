@@ -213,10 +213,14 @@ export default {
       outline: none;
       line-height: 30px;
       position: relative;
+      &::placeholder{
+        color: #999;
+      }
     }
   }
   &__right {
     position: relative;
+    padding-right: 15px;
     img {
       display: block;
       max-height: 50px;

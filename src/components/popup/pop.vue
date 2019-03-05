@@ -100,6 +100,7 @@ export default {
   position: fixed;
   z-index: 2001;
   // text-align: center;
+  height: 100%;
   &.full {
     height: 100%;
   }

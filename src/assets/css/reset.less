@@ -1,15 +1,19 @@
+@import 'https://at.alicdn.com/t/font_1037833_v62d8wpxfxm.css';
+
 @mainFontColor: #656565;
 @borderColor: #e1e1e1;
 @borderColor2: #f5f5f5;
 @hoverColor: #316ccb;
 @bgcolor: #f1f1f1;
-*{-webkit-tap-highlight-color: transparent;}
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, PingFang SC, Hiragino Sans GB,
     Roboto, Arial, Microsoft YaHei, sans-serif;
   color: @mainFontColor;
   background: #f1f1f1;
-  font-size: 28px;
+  font-size: 14px;
 }
 html,
 body,
@@ -147,4 +151,38 @@ a:focus {
 .small {
   color: #959595;
   font-size: 12px;
+}
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.animated {
+  -webkit-animation-duration: 0.3s;
+  -webkit-animation-fill-mode: both;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }

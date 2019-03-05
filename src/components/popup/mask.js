@@ -34,12 +34,6 @@ class CreateMask {
   hide() {
     if (!this.isShow) return;
     const list = document.querySelectorAll('.rx-pop');
-    // const isHide = Array.from(list).map(item => {
-    //   // if (item.style.display === 'none') {
-    //   //   console.log();
-    //   // }
-    //   console.log(item);
-    // });
     removeClass(this.mask, 'fadeIn');
     addClass(this.mask, 'fadeOut');
     setTimeout(() => {

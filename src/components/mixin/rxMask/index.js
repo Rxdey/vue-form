@@ -11,6 +11,9 @@ export default {
     value(val) {
       this.popShow = val;
       this[val ? 'open' : 'close']();
+    },
+    popShow(val) {
+      this.$emit('change', this.popShow);
     }
   },
   methods: {

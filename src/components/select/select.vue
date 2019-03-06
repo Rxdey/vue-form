@@ -8,7 +8,7 @@
         <i class="iconfont icon-right"></i>
       </div>
     </rx-cell>
-    <popup v-model="popupShow" position="bottom" height="300px">
+    <popup v-model="popupShow" position="bottom" height="300px" clickToClose @change="popChange">
       <div class="rx-select__list">
         <div class="rx-select__list--option" v-for="(item,index) in data" :key="index">
           <p class="option-content">{{item}}</p>
@@ -59,7 +59,10 @@ export default {
   watch: {
   },
   methods: {
-    handleShow(val) {
+    popChange(val) {
+      this.popupShow = val;
+    },
+    handleShow() {
       this.popupShow = true;
     }
   },

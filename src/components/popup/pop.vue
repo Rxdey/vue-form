@@ -106,47 +106,47 @@ export default {
 .top-enter-active,
 .top-leave-active {
   // opacity: 1;
-  transition: 0.3s;
+  transition: 0.5s;
   transform: translateY(0);
 }
 .top-enter,
 .top-leave-to {
   // opacity: 0;
-  transition: 0.3s;
+  transition: 0.5s;
   transform: translateY(-100%);
 }
 .left-enter-active,
 .left-leave-active {
   // opacity: 1;
-  transition: 0.3s;
+  transition: 0.5s;
   transform: translateX(0);
 }
 .left-enter,
 .left-leave-to {
   // opacity: 0;
-  transition: 0.3s;
+  transition: 0.5s;
   transform: translateX(-100%);
 }
 .right-enter-active,
 .right-leave-active {
   // opacity: 1;
-  transition: 0.3s;
+  transition: 0.5s;
   transform: translateX(0%);
 }
 .right-enter,
 .right-leave-to {
   // opacity: 0;
-  transition: 0.3s;
+  transition: 0.5s;
   transform: translateX(100%);
 }
 .bottom-enter-active,
 .bottom-leave-active {
-  transition: 0.3s;
+  transition: 0.5s;
   transform: translateY(0%);
 }
 .bottom-enter,
 .bottom-leave-to {
-  transition: 0.3s;
+  transition: 0.5s;
   transform: translateY(100%);
 }
 

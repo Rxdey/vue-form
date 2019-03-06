@@ -15,6 +15,8 @@
 
         <rx-select label="类型" placeholder="请选择" required v-model="select" :data="selectData"></rx-select>
 
+        <rx-select label="类型" placeholder="请选择" required v-model="select" :data="selectData"></rx-select>
+
       </rx-group>
       <div class="btn-box">
         <button class="rx-button" @click="handleSubmit">验证</button>

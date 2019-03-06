@@ -60,7 +60,6 @@ export default {
   },
   methods: {
     handleShow(val) {
-      console.log(val);
       this.popupShow = true;
     }
   },

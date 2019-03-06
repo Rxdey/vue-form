@@ -6,10 +6,11 @@
   </transition>
 </template>
 <script>
-import CreateMask from './mask';
+import rxMask from '../mixin/rxMask';
 
 export default {
   name: 'rxPop',
+  mixins: [rxMask],
   props: {
     value: {
       type: Boolean,
@@ -35,10 +36,12 @@ export default {
       type: Boolean,
       default: false
     },
+    // whether show mask
     mask: {
       type: Boolean,
       default: true
     },
+    // click mask to close
     maskClose: {
       type: Boolean,
       default: true
@@ -51,20 +54,7 @@ export default {
   },
   mounted () {
     this.popShow = this.value;
-    if (this.mask) {
-      this.$nextTick(() => {
-        this.rxMask = new CreateMask({
-          el: '#rx-mask',
-          isShow: this.popShow,
-          maskClick: () => {
-            if (this.maskClose) {
-              this.popShow = false;
-              this.rxMask.hide();
-            }
-          }
-        });
-      });
-    }
+    this.open();
   },
   methods: {
     clickClose () {
@@ -74,22 +64,9 @@ export default {
     },
     close () {
       this.popShow = false;
-      this.rxMask.hide();
     }
   },
-  watch: {
-    value (val) {
-      this.popShow = val;
-    },
-    popShow (val) {
-      if (val) {
-        this.rxMask.show();
-      } else {
-        this.rxMask.hide();
-      }
-      this.$emit('input', val);
-    }
-  },
+
   components: {
     // rxMask: mask
   }

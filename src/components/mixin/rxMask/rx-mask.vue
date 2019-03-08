@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div id="rx-mask" v-show="show" @click="()=>{$emit('maskClick')}"></div>
+    <div class="rx-mask" v-show="show" @click="maskClick"></div>
   </transition>
 </template>
 
@@ -8,14 +8,9 @@
 
 export default {
   name: 'rx-mask',
-  props: {
-    show: {
-      type: Boolean,
-      default: false
-    }
-  },
   data () {
     return {
+      show: false
     };
   },
   computed: {
@@ -27,6 +22,7 @@ export default {
   watch: {
   },
   methods: {
+    maskClick () {}
   },
   components: {
   }
@@ -41,6 +37,8 @@ export default {
   height: 100%;
   top: 0;
   left: 0;
+  background: rgba(0,0,0,.5);
+  transition: opacity 0.3s;
 }
 .fade-enter-active,
 .fade-leave-active {

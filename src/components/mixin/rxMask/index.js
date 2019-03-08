@@ -13,16 +13,25 @@ export default {
       this[val ? 'open' : 'close']();
     },
     popShow(val) {
-      this.$emit('change', this.popShow);
+      this.$emit('input', val);
     }
   },
+  mounted() {
+    this.popShow = this.value;
+    this.open();
+  },
   methods: {
+    maskClick() {
+      if (this.maskClose) {
+        this.popShow = false;
+      }
+    },
     open() {
       this.renderMask();
     },
     close() {
-      this.renderMask();
       rxMask.close(this);
+      this.$emit('close');
     },
     renderMask() {
       if (this.mask) {

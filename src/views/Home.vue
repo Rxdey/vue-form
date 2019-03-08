@@ -13,9 +13,9 @@
           <img slot="right" src="https://ws1.sinaimg.cn/large/005O2C54gy1fzf7lrosi8j304n02174i.jpg" alt="" style="padding:5px;">
         </rx-input>
 
-        <rx-select label="类型" placeholder="请选择" required v-model="select" :data="selectData"></rx-select>
+        <rx-select label="类型" placeholder="请选择" required v-model="select" @close="selectChange" :data="selectData"></rx-select>
 
-        <rx-select label="类型" placeholder="请选择" required v-model="select" :data="selectData"></rx-select>
+        <rx-select ref="next" label="类型" placeholder="请选择" required v-model="select" :data="selectData"></rx-select>
 
       </rx-group>
       <div class="btn-box">
@@ -54,6 +54,9 @@ export default {
       const vaild = await this.$refs.group.validate();
       if (!vaild) return false;
       this.toast('校验通过');
+    },
+    selectChange() {
+
     }
   },
   components: {

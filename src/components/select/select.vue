@@ -8,7 +8,7 @@
         <i class="iconfont icon-right"></i>
       </div>
     </rx-cell>
-    <popup v-model="popupShow" position="bottom" height="300px" clickToClose @change="popChange">
+    <popup ref="popup" v-model="popupShow" position="bottom" height="300px" @close="popChange">
       <div class="rx-select__list">
         <div class="rx-select__list--option" v-for="(item,index) in data" :key="index">
           <p class="option-content">{{item}}</p>
@@ -59,8 +59,12 @@ export default {
   watch: {
   },
   methods: {
+    getPopup() {
+      return this.$refs.popup;
+    },
     popChange(val) {
       this.popupShow = val;
+      this.$emit('close', val);
     },
     handleShow() {
       this.popupShow = true;
@@ -103,9 +107,9 @@ export default {
     background: #fff;
     max-height: 40%;
     overflow: auto;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    // position: absolute;
+    // bottom: 0;
+    // left: 0;
     width: 100%;
     &--option{
       font-size: 16px;

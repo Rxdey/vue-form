@@ -2,7 +2,6 @@
   <div class="page home">
     <div class="test">
       <rx-group ref="group" title="Test">
-
         <rx-input label="姓名" placeholder="请输入用户名" v-model="value3">
         </rx-input>
         <rx-input label="身份证" placeholder="请输入用户名" v-model="value" required>
@@ -12,11 +11,7 @@
         <rx-input label="验证码" placeholder="请输入验证码" v-model="value2" required :isType="isOneTwoThree" :min="3" :max="3">
           <img slot="right" src="https://ws1.sinaimg.cn/large/005O2C54gy1fzf7lrosi8j304n02174i.jpg" alt="" style="padding:5px;">
         </rx-input>
-
-        <rx-select label="类型" placeholder="请选择" required v-model="select" @close="selectChange" :data="selectData"></rx-select>
-
-        <rx-select ref="next" label="类型" placeholder="请选择" required v-model="select" :data="selectData"></rx-select>
-
+        <rx-select label="类型" placeholder="请选择类型" required v-model="select" @close="selectChange" :data="selectData" dataKey="key" dataName="value"></rx-select>
       </rx-group>
       <div class="btn-box">
         <button class="rx-button" @click="handleSubmit">验证</button>
@@ -30,7 +25,6 @@ import { rxGroup, rxInput, rxSelect } from '@/components';
 
 export default {
   name: 'home',
-  props: {},
   data () {
     return {
       value: '',
@@ -39,9 +33,9 @@ export default {
       phone: '',
       select: '',
       selectData: [
-        '第一个',
-        '第二个',
-        '第三个'
+        { key: '01', value: '第一' },
+        { key: '02', value: '第二' },
+        { key: '03', value: '第三' }
       ],
       isOneTwoThree: (val) => ({
         valid: val === '123',
@@ -55,7 +49,7 @@ export default {
       if (!vaild) return false;
       this.toast('校验通过');
     },
-    selectChange() {
+    selectChange () {
 
     }
   },

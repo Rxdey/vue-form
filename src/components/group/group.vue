@@ -78,7 +78,7 @@ export default {
       const offsetTop = this.$el.offsetTop + node.offsetTop - node.offsetTop;
       scroller.scrollTop = offsetTop;
     },
-    // 文本框校验
+    // 表单内容校验
     validInput (item) {
       item.blur();
       const i = this.errors.indexOf(item);

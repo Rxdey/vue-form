@@ -6,7 +6,7 @@ export default {
   },
   watch: {
     mask() {
-      this.renderMask(this);
+      this.renderMask();
     },
     value(val) {
       this.popShow = val;
@@ -18,7 +18,6 @@ export default {
   },
   mounted() {
     this.popShow = this.value;
-    this.open();
   },
   methods: {
     maskClick() {
@@ -30,14 +29,14 @@ export default {
       this.renderMask();
     },
     close() {
-      rxMask.close(this);
+      rxMask.close();
       this.$emit('close');
     },
     renderMask() {
       if (this.mask) {
         rxMask.open(this);
       } else {
-        rxMask.close(this);
+        rxMask.close();
       }
     }
   }

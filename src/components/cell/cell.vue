@@ -14,6 +14,9 @@
       <!-- <div class="iconfont icon-right"></div> -->
       <slot name="right"></slot>
     </div>
+    <div class="error-message">
+      <slot name="error"></slot>
+    </div>
   </div>
 </template>
 

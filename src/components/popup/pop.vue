@@ -58,10 +58,6 @@ export default {
         this.close();
       }
     }
-  },
-
-  components: {
-    // rxMask: mask
   }
 };
 </script>

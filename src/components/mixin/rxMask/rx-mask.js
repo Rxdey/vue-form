@@ -7,7 +7,7 @@ export default {
     this.vm = vm;
     this.update(config);
   },
-  close(vm) {
+  close() {
     Bus.$mask.show = false;
   },
   update(config = {}) {
